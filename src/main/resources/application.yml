@@ -29,9 +29,6 @@ spring:
 
 
 
-
-
-
     # HTTP ENCODING
     http:
         encoding.charset: UTF-8
