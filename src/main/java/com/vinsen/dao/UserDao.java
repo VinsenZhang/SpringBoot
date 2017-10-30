@@ -2,25 +2,30 @@ package com.vinsen.dao;
 
 import com.vinsen.bean.User;
 import org.apache.ibatis.annotations.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.io.Serializable;
 
-@Mapper
-public interface UserDao extends BaseDao<User> {
+/**
+ * @author zhangshengwen
+ */
+@Component
+public interface UserDao{
 
 
-    @Select("SELECT * FROM user where uid = #{id}")
-    @Results({
-            @Result(property = "uid", column = "uid"),
-            @Result(property = "uname", column = "uname"),
-            @Result(property = "pwd", column = "pwd")
-    })
-    @Override
-    User get(Serializable id);
+    /**
+     * 查询用户
+     * @param id
+     * @return
+     */
+    User getUserById(int id);
 
 
-    @Insert("insert into user(uname,pwd) values(#{uname},#{pwd})")
-    @Override
+    /**
+     * 插入用户
+     * @param entity
+     */
     void insert(User entity);
 
 

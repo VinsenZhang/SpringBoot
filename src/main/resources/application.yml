@@ -40,7 +40,34 @@ spring:
         cache: false
 
 
+mybatis:
+  type-aliases-package: com.vinsen.bean
+  mapper-locations[0]: classpath:mapper/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
 
 # LOGGING
 logging:
     level: com.ibatis:DEBUG
+
+
+---
+spring:
+  profiles: dev
+
+---
+spring:
+  profiles: prod
+---
+spring:
+  profiles: stage
+---
+spring:
+  profiles: test
+---
+spring:
+  profiles: test2
+---
+spring:
+  profiles: uat
+

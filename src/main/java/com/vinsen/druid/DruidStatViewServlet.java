@@ -5,6 +5,9 @@ import com.alibaba.druid.support.http.StatViewServlet;
 import javax.servlet.annotation.WebInitParam;
 import javax.servlet.annotation.WebServlet;
 
+/**
+ * @author zhangshengwen
+ */
 @SuppressWarnings("serial")
 @WebServlet(urlPatterns = "/druid/*",
         initParams={

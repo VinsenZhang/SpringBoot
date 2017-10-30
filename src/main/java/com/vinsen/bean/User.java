@@ -1,5 +1,8 @@
 package com.vinsen.bean;
 
+/**
+ * @author zhangshengwen
+ */
 public class User {
 
     private int uid;
