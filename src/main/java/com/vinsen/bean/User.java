@@ -36,13 +36,4 @@ public class User {
         this.pwd = pwd;
     }
 
-
-    @Override
-    public String toString() {
-        return "User:{" +
-                "uid:" + uid +
-                ", uname:" + uname + '\'' +
-                ", pwd:'" + pwd + '\'' +
-                '}';
-    }
 }
