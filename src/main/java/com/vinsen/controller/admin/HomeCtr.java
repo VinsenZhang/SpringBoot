@@ -2,7 +2,11 @@ package com.vinsen.controller.admin;
 
 import com.vinsen.bean.User;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * @author zhangshengwen
@@ -27,8 +31,9 @@ public class HomeCtr {
 
     @PostMapping("/doLogin")
     @ResponseBody
-    public String login(User user) {
+    public String login(HttpServletRequest request, User user) {
         if (ADMIN_UNAME.equals(user.getUname()) && ADMIN_PWD.equals(user.getPwd())) {
+            request.getSession().setAttribute("currentUser", user);
             return "success";
         } else {
             return "failed";

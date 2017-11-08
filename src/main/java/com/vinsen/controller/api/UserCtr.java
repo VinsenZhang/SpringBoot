@@ -8,9 +8,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
+/**
+ * @author zhangshengwen
+ */
 @Api(value = "User", description = "user apis")
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/api/user")
 public class UserCtr {
 
     @Autowired
