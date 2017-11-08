@@ -1,42 +1,27 @@
 package com.vinsen.controller.admin;
 
-import com.vinsen.bean.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-
-import javax.servlet.http.HttpServletRequest;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
+ * 后台页面的路由
  * @author zhangshengwen
  */
 @Controller
+@RequestMapping("/admin")
 public class HomeCtr {
-
-    private static final String ADMIN_UNAME = "admin";
-
-    private static final String ADMIN_PWD = "admin";
 
     @GetMapping("/")
     public String toLogin() {
-        return "login";
+        return "admin/login";
     }
 
 
     @GetMapping("/index")
     public String index() {
-        return "index";
+        return "admin/index";
     }
 
-    @PostMapping("/doLogin")
-    @ResponseBody
-    public String login(HttpServletRequest request, User user) {
-        if (ADMIN_UNAME.equals(user.getUname()) && ADMIN_PWD.equals(user.getPwd())) {
-            request.getSession().setAttribute("currentUser", user);
-            return "success";
-        } else {
-            return "failed";
-        }
-    }
+
 }

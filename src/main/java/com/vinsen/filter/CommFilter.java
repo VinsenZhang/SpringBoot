@@ -29,11 +29,9 @@ public class CommFilter implements Filter {
     protected static List<Pattern> patterns = new ArrayList<Pattern>();
 
     static {
-        Pattern druidPattern = Pattern.compile("\\/druid\\/.*");
+        Pattern druidPattern = Pattern.compile("\\/admin\\/.*");
         patterns.add(druidPattern);
 
-        Pattern apiPattern = Pattern.compile("\\/api\\/.*");
-        patterns.add(apiPattern);
     }
 
     @Override
@@ -49,18 +47,16 @@ public class CommFilter implements Filter {
         HttpSession session = ((HttpServletRequest) request).getSession();
         User currentUser = (User) session.getAttribute("currentUser");
 
-        if (isInclude(requestUri)) {
+        if (!isInclude(requestUri) || isStaticResource(requestUri)) {
             chain.doFilter(request, response);
             return;
         }
 
-        if (requestUri.equals("/doLogin")
-                || requestUri.equals("/")
-                || isStaticResource(requestUri)
+        if (requestUri.equals("/admin/")
                 || currentUser != null) {
             chain.doFilter(request, response);
         } else {
-            ((HttpServletResponse) response).sendRedirect("/");
+            ((HttpServletResponse) response).sendRedirect("/admin/");
         }
 
     }

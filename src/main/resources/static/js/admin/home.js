@@ -5,7 +5,7 @@ function login() {
         data: $("#loginForm").serialize(),
         success: function (data) {
             if ("success" == data)
-                location.href = "/index";
+                location.href = "/admin/index";
             else {
                 $("#alertInfo").show();
                 $("#loginForm")[0].reset();
