@@ -29,8 +29,11 @@ public class CommFilter implements Filter {
     protected static List<Pattern> patterns = new ArrayList<Pattern>();
 
     static {
-        Pattern druidPattern = Pattern.compile("\\/admin\\/.*");
+        Pattern druidPattern = Pattern.compile("/admin/.*");
         patterns.add(druidPattern);
+
+        Pattern swaggerPattern = Pattern.compile("/swagger-ui.html");
+        patterns.add(swaggerPattern);
 
     }
 

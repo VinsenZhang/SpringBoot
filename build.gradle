@@ -1,63 +1,58 @@
-plugins {
-    id 'java'
-    id 'idea'
-    id "com.arenagod.gradle.MybatisGenerator" version "1.4"
-    id 'org.springframework.boot' version '1.5.6.RELEASE'
+buildscript {
+    ext {
+        springBootVersion = '1.5.6.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+        maven { url 'https://repo.spring.io/libs-snapshot' }
+    }
+    dependencies {
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}"
+    }
 }
 
-def env = System.getProperty('env') ? project.env : 'dev'
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'spring-boot'
+apply plugin: 'io.spring.dependency-management'
+
 
 group 'org.vinsen'
 version '1.0-SNAPSHOT'
 
 sourceCompatibility = 1.8
 
+jar {
+    baseName = 'hello'
+    version = '1.0.0'
+}
+
 repositories {
-    jcenter()
+    mavenCentral()
     maven { url "http://repo.spring.io/libs-snapshot" }
 }
 
 dependencies {
-    compile 'org.springframework.boot:spring-boot-devtools'
     compile 'org.springframework.boot:spring-boot-starter-thymeleaf'
     compile 'org.mybatis.spring.boot:mybatis-spring-boot-starter:1.3.1'
     compile 'io.springfox:springfox-swagger2:2.7.0'
     compile 'io.springfox:springfox-swagger-ui:2.7.0'
     compile 'com.alibaba:druid:1.1.2'
     compile 'com.alibaba:fastjson:1.2.37'
-    mybatisGenerator 'mysql:mysql-connector-java:6.0.6'
-    mybatisGenerator 'org.mybatis.generator:mybatis-generator-core:1.3.5'
-    mybatisGenerator 'tk.mybatis:mapper:3.3.9'
-
+    compile 'mysql:mysql-connector-java:6.0.6'
 }
+
+
+def env = System.getProperty('env') ? project.env : 'dev'
 
 sourceSets {
     main {
         resources {
-            srcDirs = [ "src/main/resources", "src/main/resources/profile/$env" ]
-            exclude 'profile/**','profile/*'
+            srcDirs = ["src/main/resources", "src/main/resources/profile/$env"]
+            exclude 'profile/**', 'profile/*'
         }
     }
 }
 
-
-task bootRunDev {
-    System.setProperty("spring.profiles.active", "dev")
-}
-
-task bootRunPro {
-    System.setProperty("spring.profiles.active", "pro")
-}
-
-
-task bootRunStage {
-    System.setProperty("spring.profiles.active", "stage")
-}
-
-def profiles = 'stage'
-
-bootRun {
-    args = ["--spring.profiles.active=" + profiles]
-}
 
 
