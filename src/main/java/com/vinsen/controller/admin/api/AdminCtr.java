@@ -1,6 +1,6 @@
 package com.vinsen.controller.admin.api;
 
-import com.vinsen.bean.User;
+import com.vinsen.model.User;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -21,7 +21,7 @@ public class AdminCtr {
 
     @PostMapping("/doLogin")
     public String login(HttpServletRequest request, User user) {
-        if (ADMIN_UNAME.equals(user.getUname()) && ADMIN_PWD.equals(user.getPwd())) {
+        if (ADMIN_UNAME.equals(user.getNickname()) && ADMIN_PWD.equals(user.getIp())) {
             request.getSession().setAttribute("currentUser", user);
             return "success";
         } else {

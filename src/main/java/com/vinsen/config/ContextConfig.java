@@ -1,9 +1,10 @@
 package com.vinsen.config;
 
 import com.vinsen.filter.CommFilter;
+import com.vinsen.http.message.Message;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 
 /**
  *
@@ -13,7 +14,13 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class ContextConfig {
 
-    @Bean
+
+    @ExceptionHandler(RuntimeException.class)
+     public Message exceptionHandler() {
+
+         return new Message();
+    }
+
     public FilterRegistrationBean commConfig(){
         FilterRegistrationBean bean = new FilterRegistrationBean();
         bean.setFilter(new CommFilter());

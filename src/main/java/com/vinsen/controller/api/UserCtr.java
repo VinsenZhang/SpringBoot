@@ -1,12 +1,16 @@
 package com.vinsen.controller.api;
 
-import com.vinsen.bean.User;
+import com.vinsen.http.message.Message;
+import com.vinsen.http.message.SucccessMessage;
+import com.vinsen.model.User;
 import com.vinsen.dao.UserDao;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
  * @author zhangshengwen
@@ -21,22 +25,21 @@ public class UserCtr {
 
     @ApiOperation(value = "/{uid}", notes = "test test", httpMethod = "GET", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     @GetMapping("/{uid}")
-    public String getUserInfo(@PathVariable int uid) {
-
-        User user = userDao.getUserById(uid);
-        return user.toString();
+    public Message getUser(@PathVariable int uid) {
+        return new SucccessMessage(userDao.getUserById(uid));
     }
 
     @ApiOperation(value = "/add", notes = "add user", httpMethod = "POST", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     @PostMapping("/add")
-    public String insertUser(@RequestBody User user) {
-        try {
-            userDao.insert(user);
-            return "OK";
-        } catch (Exception e) {
-            return e.getMessage();
-        }
+    public Message insertUser(@RequestBody User user) {
+        userDao.insert(user);
+        return new SucccessMessage();
     }
 
+    @ApiOperation(value = "/get-all", notes = "get all user", httpMethod = "GET", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    @GetMapping("/get-all")
+    public Message getAllUser() {
+        return new SucccessMessage(userDao.getAllUser());
+    }
 
 }

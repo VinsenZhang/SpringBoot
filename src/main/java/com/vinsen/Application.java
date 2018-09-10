@@ -10,7 +10,6 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 /**
  * @author zhangshengwen
  */
-@ComponentScan({"com.vinsen"})
 @MapperScan("com.vinsen.dao")
 @ServletComponentScan
 @SpringBootApplication

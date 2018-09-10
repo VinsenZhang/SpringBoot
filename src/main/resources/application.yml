@@ -8,10 +8,10 @@ server:
 spring:
     # DATASOURCE
     datasource:
-        name: test
-        url: jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&charaterEncoding=utf-8
-        username: root
-        password: Vinsen1991
+        name: songshu
+        url: jdbc:mysql://47.98.97.161/songshu?useUnicode=true&charaterEncoding=utf-8
+        username: jucaihost
+        password: q3gS88zkPYzL46Iu
         driverClassName: com.mysql.cj.jdbc.Driver
         type: com.alibaba.druid.pool.DruidDataSource
         dbcp2:
@@ -41,12 +41,10 @@ spring:
 
 
 mybatis:
-  type-aliases-package: com.vinsen.bean
+  type-aliases-package: com.vinsen.model
   mapper-locations[0]: classpath:mapper/*.xml
   configuration:
     map-underscore-to-camel-case: true
 
-# LOGGING
-logging:
-    level: com.ibatis:DEBUG
+
 

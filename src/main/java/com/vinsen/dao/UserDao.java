@@ -1,11 +1,10 @@
 package com.vinsen.dao;
 
-import com.vinsen.bean.User;
-import org.apache.ibatis.annotations.*;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.vinsen.model.User;
 import org.springframework.stereotype.Component;
 
-import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author zhangshengwen
@@ -16,15 +15,18 @@ public interface UserDao{
 
     /**
      * 查询用户
-     * @param id
-     * @return
      */
     User getUserById(int id);
 
 
     /**
+     * 查询所有用户
+     */
+    List<User> getAllUser();
+
+
+    /**
      * 插入用户
-     * @param entity
      */
     void insert(User entity);
 

@@ -1,7 +1,7 @@
 package com.vinsen.filter;
 
 import com.google.common.base.Strings;
-import com.vinsen.bean.User;
+import com.vinsen.model.User;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
