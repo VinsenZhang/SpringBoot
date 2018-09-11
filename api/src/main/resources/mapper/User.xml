@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.vinsen.dao.UserDao">
+
+    <select id="getUserById" parameterType="int" resultType="com.vinsen.model.User">
+        SELECT * FROM userdata where id = #{id}
+    </select>
+
+    <select id="getAllUser"  resultType="com.vinsen.model.User">
+        SELECT * FROM userdata
+    </select>
+
+    <insert id="insert" parameterType="com.vinsen.model.User">
+        insert into user
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+           <if test="uname != null">
+                "uname",
+            </if>
+            <if test="pwd != null">
+                "pwd",
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="uname != null">
+                #{uname},
+            </if>
+            <if test="pwd != null">
+                #{pwd},
+            </if>
+        </trim>
+    </insert>
+
+</mapper>

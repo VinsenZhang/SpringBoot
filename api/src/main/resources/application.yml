@@ -1,0 +1,50 @@
+# Server settings
+server:
+    port: 8080
+    address: 0.0.0.0
+
+
+# SPRING PROFILES
+spring:
+    # DATASOURCE
+    datasource:
+        name: songshu
+        url: jdbc:mysql://47.98.97.161/songshu?useUnicode=true&charaterEncoding=utf-8
+        username: jucaihost
+        password: q3gS88zkPYzL46Iu
+        driverClassName: com.mysql.cj.jdbc.Driver
+        type: com.alibaba.druid.pool.DruidDataSource
+        dbcp2:
+            initial-size: 5
+            min-idle: 5
+            max-idle: 20
+            max-wait-millis: 60000
+            time-between-eviction-runs-millis: 60000
+            min-evictable-idle-time-millis: 300000
+            validation-query: SELECT 1 FROM DUAL
+            pool-prepared-statements: true
+            test-while-idle: true
+            test-on-borrow: false
+            test-on-return: false
+
+
+
+    # HTTP ENCODING
+    http:
+        encoding.charset: UTF-8
+        encoding.force: true
+        encoding.enabled: true
+
+    # close the default cache
+    thymeleaf:
+        cache: false
+
+
+mybatis:
+  type-aliases-package: com.vinsen.model
+  mapper-locations[0]: classpath:mapper/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+
+
+

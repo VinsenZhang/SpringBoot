@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"></meta>
+    <title>druid monitor</title>
+    <link href='/css/bootstrap.min.css' rel="stylesheet" ></link>
+    <link href="/css/comm.css" rel="stylesheet"></link>
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/admin/home.js"></script>
+
+</head>
+<body>
+<div class="container">
+    <div class="content">
+        <div class="row">
+            <div class="login-form">
+                <h2>Login</h2>
+                <form id="loginForm" method="post" autocomplete="off" >
+                    <fieldset>
+                        <div id="alertInfo" class="alert alert-error clearfix" style="margin-bottom: 5px;width: 195px; padding: 2px 15px 2px 10px;display: none;">
+                            The username or password you entered is incorrect.
+                        </div>
+                        <div class="clearfix">
+                            <input type="text" placeholder="用户名" name="uname" autofocus="autofocus"/>
+                        </div>
+                        <div class="clearfix">
+                            <input type="password" placeholder="密码" name="pwd"/>
+                        </div>
+                        <button id="loginBtn" class="btn btn-primary" type="button">Sign in</button>
+                        <button class="btn" type="reset">Reset</button>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

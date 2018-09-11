@@ -1,2 +1,4 @@
 rootProject.name = 'hello'
+include 'Replite'
+include 'api'
 
